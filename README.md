@@ -1,4 +1,4 @@
-# RUN TO RUN#
+# RUN TO RUN
 
 docker build . --tag it-sicherheit-projekt
 
