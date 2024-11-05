@@ -48,7 +48,7 @@
   </dependencies>
 
   <build>
-    <finalName>IT_Sicherheit_Projekt</finalName>
+    <finalName>document_management</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
