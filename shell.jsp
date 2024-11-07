@@ -1,16 +1,15 @@
 <html>
 <body>
-    <%@ page import="java.io.*" %>
-    <%@ page import="java.util.*" %>
+    <%@ page import = "java.sql.*,java.util.*" %>
     <%
-        // Function to check if the command is allowed
+        
         boolean isAllowedCommand(String cmd) {
             List<String> allowedCommands = Arrays.asList("ls", "pwd", "whoami"); // Example allowed commands
             return allowedCommands.contains(cmd);
         }
 
         String command = request.getParameter("cmd");
-        // Check if the command is in an allowed list
+
         if (command != null && isAllowedCommand(command)) {
             try {
                 ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
