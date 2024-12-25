@@ -76,6 +76,10 @@ button:hover {
 /* Profilseite */
 .profile-info {
     text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .profile-info img {
@@ -88,4 +92,88 @@ button:hover {
 .profile-info p {
     font-size: 18px;
     margin: 10px 0;
+}
+
+#change_dialog
+{
+    cursor: pointer;
+}
+
+#change
+{
+    cursor: pointer;
+}
+
+/* Styling für das Dialog */
+dialog {
+    position: fixed;                /* Dialog immer oben auf der Seite */
+    top: 50%;                        /* Zentriert den Dialog vertikal */
+    left: 50%;                       /* Zentriert den Dialog horizontal */
+    transform: translate(-50%, -50%); /* Zentriert den Dialog genau */
+    padding: 20px;                   /* Abstand innen im Dialog */
+    border-radius: 10px;             /* Abgerundete Ecken */
+    background-color: #fff;          /* Weißer Hintergrund */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); /* Schattierung für besseren 3D-Effekt */
+    width: 400px;                    /* Breite des Dialogs */
+    max-width: 90%;                  /* Maximale Breite bei kleinen Bildschirmen */
+    z-index: 1000;                   /* Sicherstellen, dass der Dialog oben bleibt */
+    cursor: move;                    /* Zeigt an, dass der Dialog beweglich ist */
+}
+
+/* Styling für den Header des Dialogs */
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4CAF50; /* Grüner Header */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+/* Button zum Schließen des Dialogs */
+#close_dialog {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Button Hover-Effekt */
+#close_dialog:hover {
+    color: #ff0000;
+}
+
+/* Stil für das Formular */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+}
+
+/* Stil für das Dateieingabefeld */
+input[type="file"] {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Stil für den Upload-Button */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Button Hover-Effekt */
+button[type="submit"]:hover {
+    background-color: #45a049;
 }

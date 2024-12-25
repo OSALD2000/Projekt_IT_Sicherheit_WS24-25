@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer type="application/javascript" src="js/main.js"></script>
     <title>Profil</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -18,14 +19,20 @@
 
     <h2>Willkommen, <%= user.getUsername() %>!</h2>
 
-    <h3>Profilbild ändern</h3>
-    <form action="uploadImageServlet" method="post" enctype="multipart/form-data">
-        <input type="file" name="profileImage" accept="image/*" required />
-        <button type="submit">Hochladen</button>
-    </form>
 
     <div class="profile-info">
         <img src="<%= request.getContextPath() + "/images/" + user.getProfileImage() %>" alt="Profilbild" class="profile-img">
+
+
+        <h3 id="change">Profilbild ändern</h3>
+
+        <dialog id="change_dialog">
+            <button id="close_dialog">X</button>
+            <form action="uploadImageServlet" method="post" enctype="multipart/form-data">
+                <input type="file" name="profileImage" accept="image/*" required />
+                <button type="submit">Hochladen</button>
+            </form>
+        </dialog>
 
         <p>Benutzername: <%= user.getUsername() %></p>
         <p><%= user.getEmail() %></p>
